@@ -7,7 +7,7 @@ const mongoose = require("mongoose");
 const _ = require("lodash");
 
 const homeStartingContent ="all generated questions";
-const aboutContent ="This is a website created by nikhilstacks to generate question paper";
+const aboutContent ="This is a website created by nikhilstacks to generate question paper, An easy way to generate question papers so that the user have more efficient way to create question papers.";
 const contactContent = "contact us on gmail- nikhilstacks@gmail.com";
 let data = {};
 const app = express();
@@ -74,19 +74,19 @@ app.post("/generator", function (req, res) {
     code: req.body.generateCode,
     award: req.body.generateAward
   }
-  const random = Math.random() * 6;
+  const random = Math.floor(Math.random() * 4);
   if(generate.award == 10 && generate.code == 'eng'){
-  if(random <= 2){
+  if(random == 1){
       Post.find({marks: 1, code: 'eng'}, null, {limit:10}, function (err, foundPosts) {
         data = foundPosts
         res.redirect('/paper')
       });
-    } else if(random == 3){
+    } else if(random == 2){
       Post.find({marks: 5, code: 'eng'}, null, {limit:2}, function (err, foundPosts) {
         data = foundPosts
         res.redirect('/paper')
       });
-    } else if(random > 3){
+    } else if(random == 3){
       Post.find({marks: 2, code: 'eng'}, null, {limit:5}, function (err, foundPosts) {
         data = foundPosts
         res.redirect('/paper')
@@ -94,17 +94,17 @@ app.post("/generator", function (req, res) {
     }
   }
   if(generate.award == 10 && generate.code == 'sci'){
-  if(random <= 2){
+  if(random == 2){
       Post.find({marks: 1, code: 'sci'}, null, {limit:10}, function (err, foundPosts) {
         data = foundPosts
         res.redirect('/paper')
       });
-    } else if(random == 3){
+    } else if(random == 2){
       Post.find({marks: 5, code: 'sci'}, null, {limit:2}, function (err, foundPosts) {
         data = foundPosts
         res.redirect('/paper')
       });
-    }else if(random > 3){
+    }else if(random == 3){
       Post.find({marks: 2, code: 'sci'}, null, {limit:5}, function (err, foundPosts) {
         data = foundPosts
         res.redirect('/paper')
@@ -112,18 +112,124 @@ app.post("/generator", function (req, res) {
     }
   }
   if(generate.award == 10 && generate.code == 'math'){
-  if(random <= 2){
+  if(random == 2){
       Post.find({marks: 1, code: 'math'}, null, {limit:10}, function (err, foundPosts) {
         data = foundPosts
         res.redirect('/paper')
       });
-    } else if(random == 3){
+    } else if(random == 2){
       Post.find({marks: 5, code: 'math'}, null, {limit:2}, function (err, foundPosts) {
         data = foundPosts
         res.redirect('/paper')
       });
-    }else if(random > 3){
+    }else if(random == 3){
       Post.find({marks: 2, code: 'math'}, null, {limit:5}, function (err, foundPosts) {
+        data = foundPosts
+        res.redirect('/paper')
+      });
+    }
+  }if(generate.award == 20 && generate.code == 'eng'){
+  if(random == 1){
+      Post.find({marks: 1, code: 'eng'}, null, {limit:20}, function (err, foundPosts) {
+        data = foundPosts
+        res.redirect('/paper')
+      });
+    } else if(random == 2){
+      Post.find({marks: 5, code: 'eng'}, null, {limit:4}, function (err, foundPosts) {
+        data = foundPosts
+        res.redirect('/paper')
+      });
+    } else if(random == 3){
+      Post.find({marks: 2, code: 'eng'}, null, {limit:10}, function (err, foundPosts) {
+        data = foundPosts
+        res.redirect('/paper')
+      });
+    }
+  }
+  if(generate.award == 20 && generate.code == 'sci'){
+  if(random == 1){
+      Post.find({marks: 1, code: 'sci'}, null, {limit:20}, function (err, foundPosts) {
+        data = foundPosts
+        res.redirect('/paper')
+      });
+    } else if(random == 2){
+      Post.find({marks: 5, code: 'sci'}, null, {limit:4}, function (err, foundPosts) {
+        data = foundPosts
+        res.redirect('/paper')
+      });
+    }else if(random == 3){
+      Post.find({marks: 2, code: 'sci'}, null, {limit:10}, function (err, foundPosts) {
+        data = foundPosts
+        res.redirect('/paper')
+      });
+    }
+  }
+  if(generate.award == 20 && generate.code == 'math'){
+  if(random == 1){
+      Post.find({marks: 1, code: 'math'}, null, {limit:20}, function (err, foundPosts) {
+        data = foundPosts
+        res.redirect('/paper')
+      });
+    } else if(random == 2){
+      Post.find({marks: 5, code: 'math'}, null, {limit:4}, function (err, foundPosts) {
+        data = foundPosts
+        res.redirect('/paper')
+      });
+    }else if(random == 3){
+      Post.find({marks: 2, code: 'math'}, null, {limit:10}, function (err, foundPosts) {
+        data = foundPosts
+        res.redirect('/paper')
+      });
+    }
+  }if(generate.award == 40 && generate.code == 'eng'){
+  if(random == 1){
+      Post.find({marks: 1, code: 'eng'}, null, {limit:40}, function (err, foundPosts) {
+        data = foundPosts
+        res.redirect('/paper')
+      });
+    } else if(random == 2){
+      Post.find({marks: 5, code: 'eng'}, null, {limit:8}, function (err, foundPosts) {
+        data = foundPosts
+        res.redirect('/paper')
+      });
+    } else if(random == 3){
+      Post.find({marks: 2, code: 'eng'}, null, {limit:20}, function (err, foundPosts) {
+        data = foundPosts
+        res.redirect('/paper')
+      });
+    }
+  }
+  if(generate.award == 40 && generate.code == 'sci'){
+  if(random == 1){
+      Post.find({marks: 1, code: 'sci'}, null, {limit:40}, function (err, foundPosts) {
+        data = foundPosts
+        res.redirect('/paper')
+      });
+    } else if(random == 2){
+      Post.find({marks: 5, code: 'sci'}, null, {limit:8}, function (err, foundPosts) {
+        data = foundPosts
+        res.redirect('/paper')
+      });
+    }else if(random == 3){
+      Post.find({marks: 2, code: 'sci'}, null, {limit:20}, function (err, foundPosts) {
+        data = foundPosts
+        res.redirect('/paper')
+      });
+    }
+  }
+  if(generate.award == 40 && generate.code == 'math'){
+  if(random == 1){
+      Post.find({marks: 1, code: 'math'}, null, {limit:40}, function (err, foundPosts) {
+        data = foundPosts
+        res.redirect('/paper')
+      });
+    } else if(random == 2){
+      Post.find({marks: 5, code: 'math'}, null, {limit:8}, function (err, foundPosts) {
+        data = foundPosts
+        res.redirect('/paper')
+      });
+    }else if(random == 3){
+      Post.find({marks: 2, code: 'math'}, null, {limit:20}, function (err, foundPosts) {
         data = foundPosts
         res.redirect('/paper')
       });

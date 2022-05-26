@@ -21,9 +21,10 @@
 
 .footer {
 	text-align: center;
+  background-color: #C2DED1;
 	bottom: 0;
 	width: 100%;
-	height: 60px;
+	height: 100%;
 }
 
 .footer p {
